@@ -2,6 +2,7 @@ import pytest
 
 from everycheese.users.models import User
 
+# Connects our tests with our database
 pytestmark = pytest.mark.django_db
 
 
