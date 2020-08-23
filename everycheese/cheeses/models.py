@@ -2,6 +2,7 @@ from django.db import models
 from autoslug import AutoSlugField
 from django_countries.fields import CountryField
 from model_utils.models import TimeStampedModel
+from django.urls import reverse
 
 class Cheese(TimeStampedModel):
 
@@ -20,6 +21,12 @@ class Cheese(TimeStampedModel):
     country_of_origin = CountryField( 
         "Country of Origin", blank=True
     )
+
+    def get_absolute_url(self):
+        """Return absolute URL to the Cheese Detail page.""" 
+        return reverse(
+            'cheeses:detail', kwargs={"slug": self.slug}
+        )
 
     def __str__(self): 
         return self.name
