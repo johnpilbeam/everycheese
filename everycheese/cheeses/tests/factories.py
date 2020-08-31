@@ -3,6 +3,7 @@ from everycheese.users.tests.factories import UserFactory
 
 import factory 
 import factory.fuzzy
+import pytest
 
 from ..models import Cheese
 
@@ -22,3 +23,8 @@ class CheeseFactory(factory.django.DjangoModelFactory):
     
     class Meta:
         model = Cheese
+
+
+@pytest.fixture
+def cheese():
+    return CheeseFactory()
